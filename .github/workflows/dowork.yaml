@@ -1,4 +1,4 @@
-name: dosing
+# name: dosing
 # 测试的话打开这个来测试变量值之类的是否填写正确
 #on:
 #  push:  # 任何推送到仓库都会触发这个工作流
@@ -12,27 +12,27 @@ on:
     - cron: '0 13 * * 5,6'
 
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.11'
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Set up Python 3.11
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: '3.11'
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install Pyexecjs requests pytz
+#       - name: Install dependencies
+#         run: |
+#           python -m pip install --upgrade pip
+#           pip install Pyexecjs requests pytz
 
-      - name: Run python script
-        env:
-          USERNAME: ${{ secrets.USERNAME }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
-          TOKEN: ${{ secrets.TOKEN }}
-        run: |
-          python gzlg助手/dowork.py || echo "Script failed with exit code $?"
+#       - name: Run python script
+#         env:
+#           USERNAME: ${{ secrets.USERNAME }}
+#           PASSWORD: ${{ secrets.PASSWORD }}
+#           EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+#           TOKEN: ${{ secrets.TOKEN }}
+#         run: |
+#           python gzlg助手/dowork.py || echo "Script failed with exit code $?"
         
